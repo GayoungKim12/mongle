@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #F8F3F6;
+  --text-main: #5C4B51;
+  --text-sub: #9E8F96;
+  --accent-pink: #ECAEBB;
+  --accent-blue: #B5CBE8;
+  --accent-purple: #CDBFE3;
+  --glass-bg: rgba(235, 255, 255, 0.2);
+  /*--glass-border:  rgba(255, 255, 255, 0.6);*/
+  --shadow-soft: 0 8px 28px rgba(180, 160, 170, 0.10);
+  --shadow-inner: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.45), inset -2px -2px 2.5px rgba(255, 255, 255, 0.25);
+}
+
+/* ── Decorative animations ── */
+@keyframes floatBlob {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(10px, -16px) scale(1.06);
+  }
+  66% {
+    transform: translate(-8px, 8px) scale(0.95);
+  }
+}
+
+@keyframes floatBlobSlow {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  40% {
+    transform: translate(-12px, -10px) scale(1.04);
+  }
+  70% {
+    transform: translate(6px, 12px) scale(0.97);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.6) rotate(-15deg);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.2) rotate(15deg);
+  }
+}
+
+@keyframes floatDot {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Paper grain texture */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body {
+  background-color: #E2D7DB;
+  color: var(--text-main);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 태블릿·데스크탑: 바깥 배경을 워터컬러 그라디언트로 */
+@media (min-width: 640px) {
+  body {
+    background: radial-gradient(ellipse at 20% 25%, rgba(236, 174, 187, 0.40) 0%, transparent 50%),
+    radial-gradient(ellipse at 78% 72%, rgba(181, 203, 232, 0.40) 0%, transparent 50%),
+    radial-gradient(ellipse at 65% 15%, rgba(205, 191, 227, 0.28) 0%, transparent 45%),
+    #DDD3DB;
+  }
+}
+
+/* Scrollbar hide */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Glass card */
+.glass {
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  box-shadow: var(--shadow-soft), var(--shadow-inner);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+
+/* Cloud-glass button / pill */
+.cloud-glass-btn {
+  background: rgba(255, 255, 255, 0.28);
+  border: 1.5px solid rgba(255, 255, 255, 0.82);
+  box-shadow: 0 4px 20px rgba(180, 160, 180, 0.10),
+  inset 0 1.5px 0 rgba(255, 255, 255, 0.90),
+  inset 0 -1px 0 rgba(255, 255, 255, 0.20);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+}
+
+/* Textarea reset */
+textarea {
+  resize: none;
+  outline: none;
+  border: none;
+  background: transparent;
+  font-family: var(--font-gowun), sans-serif;
+}
+
+textarea::placeholder {
+  color: #C8BBC0;
+}
